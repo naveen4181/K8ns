@@ -1,0 +1,15 @@
+package com.runnerspace.main;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
+
+@SpringBootApplication
+@ComponentScan(basePackages = {"com.runnersspace"})
+public class RunnersSpaceApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(RunnersSpaceApplication.class, args);
+	}
+
+}

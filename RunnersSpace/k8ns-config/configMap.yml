@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: runnerspace-env-config
+data:
+  APP_MESSAGE: "Env ConfigMap!Changes"
+  APP_PORT: "9090"

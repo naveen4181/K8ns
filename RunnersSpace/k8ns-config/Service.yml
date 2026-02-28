@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: runnerspace-service
+spec:
+  selector:
+    app: runnerspace
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 9090
+  type: LoadBalancer

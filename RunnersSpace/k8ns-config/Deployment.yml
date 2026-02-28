@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: runnerspace-deployment
+  namespace: kubernates-ns
+  annotations: 
+    kubernetes.io/change-cause: "Initial deployment of runnerspace app v21 with Secrets"
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: runnerspace
+  template:
+    metadata:
+      labels:
+        app: runnerspace
+    spec:
+      containers:
+        - name: runnerspace-container
+          image: trialuseo/k8ns-v1:21
+          ports:
+            - containerPort: 9090
+          # Inject environment variables from ConfigMap
+          envFrom:
+            - configMapRef:
+                name: runnerspace-env-config
+            - secretRef:
+                name: runnerspace-secret-env   # <-- NEW Secret injection
+          # Mount ConfigMap as a volume
+          volumeMounts:
+            - name: config-volume
+              mountPath: /config
+          # Add liveness probe
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 9090
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          # Resource requests and limits
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "250m"
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+      volumes:
+        - name: config-volume
+          configMap:
+            name: runnerspace-volume-config
