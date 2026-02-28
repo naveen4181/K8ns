@@ -47,25 +47,13 @@ public class ApiProcessorController {
 				}
 
 			} catch (Exception e) {
-				logger.error("Exception Occured while Porcessing:" + e.getMessage());
+				logger.error("Exception Occured while Processing:" + e.getMessage());
 			}
 
 		}
 		return output;
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-
-	
-	
-	
 	
 	
 }
