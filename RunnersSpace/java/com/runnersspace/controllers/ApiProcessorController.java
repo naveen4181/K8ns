@@ -62,13 +62,7 @@ public class ApiProcessorController {
 	
 	
 	
-	@GetMapping(value = "/bracketCheck/{input}")
-	public String bracketValidator(@PathVariable String input) {
-		
-		
-		
-		return"";
-	}
+
 	
 	
 	

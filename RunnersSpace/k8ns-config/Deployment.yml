@@ -4,7 +4,7 @@ metadata:
   name: runnerspace-deployment
   namespace: kubernates-ns
   annotations: 
-    kubernetes.io/change-cause: "Initial deployment of runnerspace app v21 with Secrets"
+    kubernetes.io/change-cause: "Initial deployment of runnerspace app v21 with HPA"
 spec:
   replicas: 2
   selector:
@@ -35,8 +35,8 @@ spec:
             httpGet:
               path: /actuator/health
               port: 9090
-            initialDelaySeconds: 5
-            periodSeconds: 10
+            initialDelaySeconds: 20
+            periodSeconds: 25
           # Resource requests and limits
           resources:
             requests:
