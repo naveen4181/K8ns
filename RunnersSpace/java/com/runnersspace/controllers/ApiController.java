@@ -50,7 +50,6 @@ public class ApiController {
 
 	@GetMapping(value = "/secrets")
 	public String getSecrets() {
-		System.out.println("-------------" + secretsFromenvUname);
 		// byte[] decodeUname=Base64.decodeBase64(secretsFromenvUname);
 		String decoded = new String(secretsFromenvUname);
 		logger.info("Secrets Input Values Recieved :" + System.getenv());
